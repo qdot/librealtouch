@@ -1,15 +1,13 @@
 /***
- * @file lightstone.c
- * @brief Common functions for lightstone communication
+ * @file realtouch.c
+ * @brief Common functions for realtouch communication
  * @author Kyle Machulis (kyle@nonpolynomial.com)
- * @copyright (c) 2006-2012 Nonpolynomial Labs/Kyle Machulis
+ * @copyright (c) 2012 Nonpolynomial Labs/Kyle Machulis
  * @license BSD License
- *
- * Project info at http://liblightstone.nonpolynomial.com/
  *
  */
 
-/* #include "lightstone/lightstone.h" */
+/* #include "realtouch/realtouch.h" */
 #include <hidapi.h>
 #include <stdio.h>
 #include <stdlib.h>
