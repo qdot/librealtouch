@@ -197,6 +197,58 @@ int main(int argc, char** argv)
 		printf("0x%.02x ", msg[i]);
 	printf("\n");
 
+	// Lube shooting
+	// Byte 0: length
+	// Byte 1: Command marker (0xff means lube shooter)
+	// Byte 2: ? (Shooting strength maybe?)
+	// Byte 3: Timing (i * .5 seconds maybe?)
+	// Byte 4-5: Zeros
+	memset(msg, 0, 64);
+	msg[0] = 0x06;
+	msg[1] = 0xff;
+	msg[2] = 0xd0;
+	msg[3] = 0x07;
+	realtouch_write(test, 64, msg);
+	r = realtouch_read(test, 64, msg);
+	printf("Serial reply:\n");
+	for(i = 0; i < msg[0]; ++i)
+		printf("0x%.02x ", msg[i]);
+	printf("\n");
+
+	// Lower Belt Move
+	// Byte 0: length
+	// Byte 1: Command marker (0x20 - lower belt)
+	// Byte 2: Speed/Intensity
+	// Byte 3: Duration (1/256th of a second?)
+	memset(msg, 0, 64);
+	msg[0] = 0x03;
+	msg[1] = 0x20;
+	msg[2] = 0x7f;
+	msg[3] = 0x86;
+	realtouch_write(test, 64, msg);
+	r = realtouch_read(test, 64, msg);
+	printf("Serial reply:\n");
+	for(i = 0; i < msg[0]; ++i)
+		printf("0x%.02x ", msg[i]);
+	printf("\n");
+
+	// Upper Belt Move
+	// Byte 0: length
+	// Byte 1: Command marker (0x30 - upper belt)
+	// Byte 2: Speed/Intensity
+	// Byte 3: Duration (1/256th of a second?)
+	memset(msg, 0, 64);
+	msg[0] = 0x03;
+	msg[1] = 0x30;
+	msg[2] = 0xff;
+	msg[3] = 0xff;
+	realtouch_write(test, 64, msg);
+	r = realtouch_read(test, 64, msg);
+	printf("Serial reply:\n");
+	for(i = 0; i < msg[0]; ++i)
+		printf("0x%.02x ", msg[i]);
+	printf("\n");
+	
 	realtouch_close(test);
 	printf("Closed realtouch\n");
 	realtouch_delete(test);
