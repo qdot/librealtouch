@@ -174,6 +174,9 @@ int main(int argc, char** argv)
 	}		
 
 	//Get the firmware version
+	// Byte 0: Zero (Not length! Liar! Liiiiiiiiiar!)
+	// Byte 1: Firmware version Major (BCD?)
+	// Byte 2: Firmware version Minor (BCD?)
 	realtouch_write(test, 64, msg);
 	int r = realtouch_read(test, 64, msg);
 	printf("Version reply:\n");
@@ -193,7 +196,6 @@ int main(int argc, char** argv)
 	for(i = 0; i < msg[0]; ++i)
 		printf("0x%.02x ", msg[i]);
 	printf("\n");
-
 
 	realtouch_close(test);
 	printf("Closed realtouch\n");
