@@ -73,6 +73,7 @@ S <axis>
 ----------
 
 Axis Values
+
 * "A": "All"—stop every component of the device
 * "H": "Heater"—turn off the heater
 * "L": "Lube"—stop the dispensing of lube
