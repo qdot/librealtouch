@@ -18,18 +18,18 @@ company (OS X, linux, etc...)
 
 For the driver, you'll need
 
-- libusb-1.0 >= 1.0.3 (*nix and OS X)
+* hidapi - http://www.signal11.us/oss/hidapi/
 
 === Basic Compiling Instructions
 
 To use CMake:
 
-- Make a directory somewhere. Like, say, 'build' in your repo directory.
-- Go into that directory
-- Type cmake ..
-- Watch the magic happen
-- After this, just run make and you'll be fine.
-- If you want to use an IDE or whatever, well, you'll figure it out.
+* Make a directory somewhere. Like, say, 'build' in your repo directory.
+* Go into that directory
+* Type cmake ..
+* Watch the magic happen
+* After this, just run make and you'll be fine.
+* If you want to use an IDE or whatever, well, you'll figure it out.
 
 === Command Index
 
@@ -73,13 +73,13 @@ S <axis>
 ----------
 
 Axis Values
-- "A": "All"—stop every component of the device
-- "H": "Heater"—turn off the heater
-- "L": "Lube"—stop the dispensing of lube
-- "T": "Top Belt"—stop the top belt
-- "B": "Bottom Belt"—stop the bottom belt
-- "U": "Both Belts"—stop both the top and bottom belt
-- "S": "Squeeze" (orifice)—stop the orifice
+* "A": "All"—stop every component of the device
+* "H": "Heater"—turn off the heater
+* "L": "Lube"—stop the dispensing of lube
+* "T": "Top Belt"—stop the top belt
+* "B": "Bottom Belt"—stop the bottom belt
+* "U": "Both Belts"—stop both the top and bottom belt
+* "S": "Squeeze" (orifice)—stop the orifice
 
 === Licensing
 
