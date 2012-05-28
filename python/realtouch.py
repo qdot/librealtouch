@@ -1,3 +1,13 @@
+# librealtouch Python Module
+# By qDot (Kyle Machulis)
+# http://www.github.com/qdot/librealtouch
+#
+# Simple Proof of Concept library for direct USB control of the
+# realtouch toy. Only works on linux for the time being.
+#
+# USB commands map to CDK commands almost directly. All commands sent
+# as USB interrupt packets (read/write to hidraw currently).
+
 import sys, os
 import array
 import logging
