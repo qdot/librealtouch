@@ -19,7 +19,7 @@ class RealTouch(object):
 
   def getSerial(self):
     g = array.array('B', [0] * 64)
-    g[0] = [0xa]
+    g[0] = 0xa
     self.fd.write(g)
     print ["0x%.02x " % (ord(x)) for x in self.fd.read(64)]
 
@@ -64,10 +64,9 @@ class RealTouch(object):
     self.fd.write(g)
     print ["0x%.02x " % (ord(x)) for x in self.fd.read(64)]
     
-
   def vectorMovement(self, magnitude, axis, direction, duration,
-                     inMagnitude = None, inDuration = None,
-                     outMagnitude = None, outDuration = None):
+                     inMagnitude = 0x0, inDuration = 0x0,
+                     outMagnitude = 0x0, outDuration = 0x0):
     axis_dict = {
       "T" : 0x00,
       "B" : 0x10,
@@ -76,7 +75,7 @@ class RealTouch(object):
     }
     g = array.array('B', [0] * 64)
     g[0] = 0x02
-    g[1] = axis
+    g[1] = axis_dict[axis]
     if direction == "OUT":
       g[1] += 0x80
     g[2] = magnitude
@@ -88,10 +87,12 @@ class RealTouch(object):
     g[9] = outMagnitude
     g[9] = outDuration & 0xff
     g[10] = (outDuration & 0xff00) >> 0x8
+    self.fd.write(g)
+    print ["0x%.02x " % (ord(x)) for x in self.fd.read(64)]
 
   def periodicMovement(self, period, magnitude, axis, direction,
-                       duration, inMagnitude = None, inDuration =
-                       None, outMagnitude = None, outDuration = None):
+                       duration, inMagnitude = 0x0, inDuration =
+                       0x0, outMagnitude = 0x0, outDuration = 0x0):
     axis_dict = {
       "T" : 0x00,
       "B" : 0x10,
@@ -100,7 +101,7 @@ class RealTouch(object):
     }
     g = array.array('B', [0] * 64)
     g[0] = 0x03
-    g[1] = axis
+    g[1] = axis_dict[axis]
     if direction == "OUT":
       g[1] += 0x80
     g[2] = magnitude
@@ -113,13 +114,15 @@ class RealTouch(object):
     g[9] = outMagnitude
     g[10] = outDuration & 0xff
     g[11] = (outDuration & 0xff00) >> 0x8
+    self.fd.write(g)
+    print ["0x%.02x " % (ord(x)) for x in self.fd.read(64)]
 
 def main():
   r = RealTouch()
 
   r.getSerial()
   r.getFirmwareVersion()
-
+  r.vectorMovement(255, "U", "OUT", 1000)
   return 0
 
 if __name__ == "__main__":
