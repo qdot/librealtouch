@@ -39,7 +39,7 @@ CDK is available at http://developer.realtouch.com/downloads.php)
 ==== General Format
 
 ----------
-<comment> <statement><newline>
+<command> <statement><newline>
 ----------
 
 ==== Movement (Vector)
